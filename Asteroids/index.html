@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>AsteroidsGL</title>
+
+    <link rel="icon" type="image/x-icon" href="./assets/imgs/favicon.png">
+
+    <script type="module" src="./src/main.js">  </script>
+
+    <style>
+        html {
+            color: white;
+            background-color: black;
+            font-family: Arial;
+            overflow: hidden;
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+            display: flex;
+            /* Use flexbox for centering content */
+            justify-content: center;
+            /* Center horizontally */
+            align-items: center;
+            /* Center vertically */
+            min-height: 100vh;
+            /* Ensure body takes full viewport height */
+            position: relative;
+            /* For absolute positioning of controls */
+        }
+
+        canvas {
+            display: block;
+            width: 100vw;
+            /* Canvas fills viewport width */
+            height: 100vh;
+            /* Canvas fills viewport height */
+            z-index: 0;
+            /* Ensure canvas is behind controls */
+        }
+
+        #canvas-div {
+            position: absolute;
+            /* Take full space for canvas */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            /* Make canvas-div a flex container */
+            justify-content: center;
+            /* Center canvas horizontally within itself */
+            align-items: center;
+            /* Center canvas vertically within itself */
+        }
+
+        #controls-div {
+            position: absolute;
+            /* Position relative to the body */
+            top: 10px;
+            /* 10px from the top */
+            left: 10px;
+            /* 10px from the left */
+            background-color: rgba(51, 51, 51, 0.7);
+            /* Semi-transparent background */
+            padding: 10px;
+            /* Smaller padding */
+            border-radius: 8px;
+            /* Slightly rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            /* Subtle shadow */
+            z-index: 1;
+            /* Ensure controls are above the canvas */
+            max-width: 180px;
+            /* Limit the width of the control panel */
+            font-size: 0.9em;
+            /* Slightly smaller text */
+        }
+
+        #controls {
+            padding: 0;
+            /* No padding for inner controls div */
+        }
+
+        .control-group {
+            margin-bottom: 0;
+            /* No bottom margin for the only control group */
+        }
+
+        .control {
+            padding: 5px 0;
+            /* Smaller padding for individual controls */
+        }
+
+        /* Styling for the rotation labels */
+        .control p {
+            margin: 0;
+            /* Remove default paragraph margins */
+            line-height: 1.2;
+            /* Adjust line height for compactness */
+        }
+
+        hr {
+            border-top: 1px #bbb;
+        }
+
+        #hud {
+            width: 100vw;
+            height: 100vh;
+        }
+
+    </style>
+
+</head>
+
+<body onresize="WindowResize()">
+    <div id="canvas-div">
+        <canvas id="canvas"></canvas>
+        <canvas id="hud" style="position:absolute; top:0; left:0; z-index:2; pointer-events:none;"></canvas>
+    </div>
+
+    <div id="controls-div">
+        <div id="controls">
+            <div class="control-group">
+                <div class="control">
+                    <div class="control">
+                        <p>FPS: <span id="fps">0.00</span></p>
+                    </div>
+                    <hr>
+                    <div class="control">
+                        <p style="color: lightcoral">Rotation X: <span style="padding-left:1em" id="rotX">0.00</span></p>
+                        <p style="color: lightyellow">Rotation Y:  <span style="padding-left:1em" id="rotY">0.00</span></p>
+                        <!--<p>Rotation Z: <span id="rotZ">0.00</span></p>-->
+                    </div>
+                    <hr>
+                    <div class="control">
+                        <p style="color: lightcoral">Position X: <span style="padding-left:1em" id="posX">0.00</span></p>
+                        <p style="color: lightyellow">Position Y: <span style="padding-left:1em" id="posY">0.00</span></p>
+                        <p style="color: lightblue">Position Z: <span style="padding-left:1em" id="posZ">0.00</span></p>
+                    </div>
+                    <hr>
+                    <div class="control">
+                        <p style="color: lightsalmon">Velocity: <span style="padding-left:1em" id="vel">0.00</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
